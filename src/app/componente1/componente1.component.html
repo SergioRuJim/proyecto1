@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-12 border border-success">
+        <p>Componente 1</p>
+        <button type="button" (click)="eventoIntercambiar()" class="btn btn-primary btn-block mb-2">Intercambiar</button>
+    </div>
+    <div class="col-4 border border-success">
+        <app-componente4></app-componente4>
+    </div>
+    <div class="col-8 border border-success p-0">
+        <div class="border-bottom border-success p-2">
+            <app-componente2 [curso1Componente1] = "curso1" [contadorComponente1] = "contador"></app-componente2>
+        </div>
+        <div class="p-2">
+            <app-componente3 [curso2Componente1] = "curso2" [contadorComponente1] = "contador"></app-componente3>
+        </div>     
+    </div>
+</div>
