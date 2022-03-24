@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProductosService } from '../servicio/productos.service';
+import { Product } from '../models/product.models';
 
 @Component({
   selector: 'app-c-seccion3',
@@ -21,7 +23,8 @@ export class CSeccion3Component implements OnInit {
 
   ciudad!: String;
   poblacion!: String;
-  surveyForm!: FormGroup
+
+  productos!: Product[];
 
   formComentarios: FormGroup = new FormGroup({
     usuario: new FormControl('', Validators.required),
@@ -67,7 +70,9 @@ limpiarCampos(){
   })
 }
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private productosService: ProductosService) { 
+    this.productos = productosService.productos;
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
