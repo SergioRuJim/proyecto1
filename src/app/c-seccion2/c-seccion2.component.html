@@ -1,1 +1,24 @@
 <p>Seccion 2: <label *ngIf="nombrePersona">Protagonizada por {{ nombrePersona }}</label></p>
+<form [formGroup]="formComentarios">
+    <div class="row">
+        <div class="mb-3 col-4">
+            <label for="usuario" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="usuario"  formControlName="usuario" required>
+            <div *ngIf="f['usuario'].errors" id="usuarioHelp" class="form-text color-red">*Obligatorio</div>
+        </div>
+        <div class="mb-3 col-4">
+            <label for="comentario" class="form-label">Comentario</label>
+            <input type="text" class="form-control" id="comentario" formControlName="comentario">
+            <div *ngIf="f['comentario'].errors" id="usuarioHelp" class="form-text">
+                <p *ngIf="f['comentario'].errors['required']" class="error-validate color-red">*Obligatorio</p>
+                <p *ngIf="f['comentario'].errors['minlength']" class="error-validate color-red">*Debe contener mínimo 10 caracteres</p>
+            </div>
+        </div>
+        <div class="col-4 d-flex align-items-center">
+            <button *ngIf="!f['usuario'].errors && !f['comentario'].errors;else desactivado" type="submit" class="btn btn-primary col-4" (click)="enviarComentarios()">Enviar</button>
+            <ng-template #desactivado>
+                <button type="submit" class="btn btn-primary col-4" (click)="enviarComentarios()" disabled>Enviar</button>
+            </ng-template>
+        </div>
+    </div>
+  </form>

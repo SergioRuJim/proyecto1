@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-c-seccion3',
@@ -8,8 +9,63 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CSeccion3Component implements OnInit {
 
+  tecnologias = [{"id":'Angular', 'nombre':'Angular'}]
+  tags = [{"id":'1.2', 'nombre':'1.2'}]
+  estados = [{"id":'Avanzado', 'nombre':'Avanzado'}]
+  formBusquedaCursos:FormGroup = new FormGroup({
+    nombreCurso: new FormControl(''),
+    tecnologia: new FormControl(''),
+    tag: new FormControl(''),
+    estado: new FormControl('')
+  })
+
   ciudad!: String;
   poblacion!: String;
+  surveyForm!: FormGroup
+
+  formComentarios: FormGroup = new FormGroup({
+    usuario: new FormControl('', Validators.required),
+    comentarios : new FormControl('', [Validators.required,Validators.minLength(10)]),
+    email : new FormControl('', [Validators.required, Validators.pattern("[^@]*@[^@]*"),this.emailDomainValidator])
+  })
+
+  formAltaCurso: FormGroup = new FormGroup({
+    nombreCurso: new FormControl('', [Validators.required, Validators.minLength(3)])
+  })
+
+  // Para facilitar el acceso desde HTML:
+  get f(){
+    return this.formAltaCurso.controls;
+  }
+
+  emailDomainValidator(control:FormControl) {
+    let email = control.value;
+    if(email && email.indexOf("@") != -1){
+      let [_, domain] = email.split("@");
+      if(domain !== "codecraft.tv"){
+        return {
+          emailDomain: domain
+        }
+      }
+    }
+    return null;
+  }
+
+  realizarBusquedaCursos(){
+    console.log(  "Buscar por TAG: " + this.formBusquedaCursos.value.tag +
+                  " - NOMBRECURSO: " + this.formBusquedaCursos.value.nombreCurso + 
+                  " - ESTADO: " + this.formBusquedaCursos.value.estado + 
+                " - TECNOLOGIA: " + this.formBusquedaCursos.value.tecnologia)
+}
+
+limpiarCampos(){
+  this.formBusquedaCursos = new FormGroup({
+    nombreCurso: new FormControl(''),
+    tecnologia: new FormControl(''),
+    estado: new FormControl(''),
+    tag: new FormControl('')
+  })
+}
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 
