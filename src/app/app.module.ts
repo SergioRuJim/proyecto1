@@ -5,7 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductosService } from './servicio/productos.service';
 import { UsuariosService } from './servicio/usuarios.service';
 import { LibrosService } from './servicio/libros.service';
-import { HttpClientModule } from'@angular/common/http';
+import { HttpClient, HttpClientModule } from'@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './principal/principal.component';
@@ -54,9 +56,20 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader:{
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [ HttpClient ]
+      }
+    })
   ],
   providers: [ProductosService, UsuariosService, LibrosService],
   bootstrap: [PrincipalComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient){
+  return new TranslateHttpLoader(http);
+}

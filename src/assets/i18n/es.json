@@ -1,0 +1,9 @@
+{
+    "main":{
+        "language": "Idioma",
+        "spanish": "Español",
+        "english": " Inglés",
+        "input_placeholder": "Introduce texto aquí",
+        "introduced_text": "El texto introducido es: {{text}}"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "main":{
+        "language": "Language",
+        "spanish": "Spanish",
+        "english": " English",
+        "input_placeholder": "Introduced text here",
+        "introduced_text": "Introduced text es: {{text}}"
+    }
+}

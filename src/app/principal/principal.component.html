@@ -16,6 +16,10 @@
                 <p>Ya estamos preparados para nuevos pasos...</p>
             </div>
         </section>
+        <section id="language">
+            <button type="button" class="btn btn-primary btn-block m-2" [translate]="'main.spanish'" (click)="changedLanguage($event)"></button>
+            <label>{{'main.input_placeholder' | translate}}</label>
+        </section>
         <section id="uno">
             <h3>Sección 1:</h3>
             <div class="row">
