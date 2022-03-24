@@ -1,0 +1,28 @@
+{
+  "libros": [
+    {
+      "id": 1,
+      "title": "El nombre del viento",
+      "author": "Patrick Rothfuss",
+      "year": "2007"
+    },
+    {
+      "id": 2,
+      "title": "El señor de los anillos",
+      "author": "J.R.R. Tolkien",
+      "year": "1955"
+    },
+    {
+      "id": 3,
+      "title": "El hobbit",
+      "author": "J.R.R. Tolkien",
+      "year": "2007"
+    },
+    {
+      "id": 4,
+      "title": "Harry Potter",
+      "author": "J.R. Rowling",
+      "year": "1997"
+    }
+  ]
+}

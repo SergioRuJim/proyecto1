@@ -1,0 +1,24 @@
+<h4>Listado libros fantasia</h4>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Año</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let libro of libros">
+                        <td>{{libro.id}}</td>
+                        <td>{{libro.title}}</td>
+                        <td>{{libro.author}}</td>
+                        <td>{{libro.year}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
