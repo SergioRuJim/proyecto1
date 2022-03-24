@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ThisReceiver } from '@angular/compiler';
@@ -12,7 +12,7 @@ import { ThisReceiver } from '@angular/compiler';
 export class CSeccion2Component implements OnInit {
 
 
-    nombrePersona!: String;
+    nombrePersona!: string;
 
     formComentarios: FormGroup = new FormGroup({
       usuario : new FormControl('', Validators.required),
@@ -44,6 +44,14 @@ export class CSeccion2Component implements OnInit {
         this.nombrePersona = params["nombre"];
       }
     });
+    console.log("Nombre anterior: " + localStorage.getItem("NOMBRE_ANTERIOR"));
+  }
+
+  ngOnDestroy():void{
+    if(this.nombrePersona != null)
+      localStorage.setItem("NOMBRE_ANTERIOR", this.nombrePersona);
+    else
+      localStorage.setItem("NOMBRE_ANTERIOR", "(ningúb nombre recibido por parámetro)");
   }
 
 }
