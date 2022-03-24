@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductosService } from './servicio/productos.service';
+import { UsuariosService } from './servicio/usuarios.service';
+import { HttpClientModule } from'@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PrincipalComponent } from './principal/principal.component';
@@ -16,6 +18,7 @@ import { Componente4Component } from './componente4/componente4.component';
 import { CSeccion2Component } from './c-seccion2/c-seccion2.component';
 import { CSeccion3Component } from './c-seccion3/c-seccion3.component';
 import { ErrorComponent } from './error/error.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 const routes: Routes = [
   {path:'', component: CSeccion2Component},
@@ -23,6 +26,7 @@ const routes: Routes = [
   {path:'seccion3', component: CSeccion3Component},
   {path:'seccion2/:nombre', component: CSeccion2Component},
   {path:'seccion3/:ciudad/:poblacion', component: CSeccion3Component},
+  {path:'usuario', component: UsuarioComponent},
   {path:'**', component: ErrorComponent},
 ];
 
@@ -38,15 +42,17 @@ const routes: Routes = [
     Componente3Component,
     Componente4Component,
     CSeccion2Component,
-    CSeccion3Component
+    CSeccion3Component,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [ProductosService],
+  providers: [ProductosService, UsuariosService],
   bootstrap: [PrincipalComponent]
 })
 export class AppModule { }
